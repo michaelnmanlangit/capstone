@@ -1,0 +1,112 @@
+# Laravel
+/diasterlink/vendor/
+/diasterlink/node_modules/
+/diasterlink/public/hot
+/diasterlink/public/storage
+/diasterlink/storage/*.key
+/diasterlink/.env
+/diasterlink/.env.backup
+/diasterlink/.env.production
+/diasterlink/.phpunit.result.cache
+/diasterlink/Homestead.json
+/diasterlink/Homestead.yaml
+/diasterlink/auth.json
+/diasterlink/npm-debug.log
+/diasterlink/yarn-error.log
+/diasterlink/.idea
+/diasterlink/.vscode
+
+# Laravel Storage & Logs
+/diasterlink/storage/logs/
+/diasterlink/storage/app/public/
+/diasterlink/storage/framework/cache/
+/diasterlink/storage/framework/sessions/
+/diasterlink/storage/framework/testing/
+/diasterlink/storage/framework/views/
+
+# Python & ML
+/ml/venv/
+/ml/__pycache__/
+/ml/*.pyc
+/ml/*.pyo
+/ml/*.pyd
+/ml/.Python
+/ml/env/
+/ml/pip-log.txt
+/ml/pip-delete-this-directory.txt
+/ml/.tox/
+/ml/.coverage
+/ml/.pytest_cache/
+/ml/htmlcov/
+
+# ML Models & Data (Large files)
+/ml/*.pth
+/ml/*.pkl
+/ml/*.h5
+/ml/models/
+/ml/checkpoints/
+/ml/disaster_authenticity_dataset/
+/ml/crisis_vision_benchmarks/data/
+
+# System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.tmp
+*.temp
+*.log
+
+# IDE & Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Operating System
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Temporary files
+tmp/
+temp/
+logs/
+
+# Configuration files with sensitive data
+config.local.json
+secrets.json
+local_settings.py
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Development tools
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Machine Learning specific
+wandb/
+tensorboard_logs/
+checkpoints/
+experiments/
+
+# Dataset files (too large for git)
+*.csv
+*.json
+!/ml/requirements.txt
+!/ml/model_config.json

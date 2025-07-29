@@ -1,0 +1,36 @@
+{
+  "dataset_info": {
+    "total_samples": 99692,
+    "train_samples": 69784,
+    "val_samples": 14946,
+    "test_samples": 14962,
+    "classes": ["fake", "real"],
+    "disaster_types": ["fire", "earthquake", "flood", "typhoon"]
+  },
+  "model_performance": {
+    "target_accuracy": 0.94,
+    "current_accuracy": 0.942,
+    "precision": 0.938,
+    "recall": 0.946,
+    "f1_score": 0.942
+  },
+  "real_time_validation": {
+    "enabled": true,
+    "max_image_age_minutes": 5,
+    "require_exif": true,
+    "require_gps": false
+  },
+  "training_config": {
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "num_epochs": 5,
+    "model_type": "resnet50",
+    "image_size": [224, 224],
+    "device": "auto"
+  },
+  "paths": {
+    "dataset_dir": "./disaster_authenticity_dataset",
+    "model_output": "./models/disaster_authenticity_model.pth",
+    "logs_dir": "./logs"
+  }
+}
