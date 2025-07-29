@@ -5,6 +5,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ResponderController;
 use App\Http\Controllers\CivilianController;
+use App\Http\Controllers\SOSController;
+use App\Http\Controllers\IncidentController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,9 +35,19 @@ Route::middleware(['auth', 'role:responder,admin'])->prefix('responder')->name('
 // Civilian Routes
 Route::middleware(['auth', 'role:civilian,admin'])->prefix('civilian')->name('civilian.')->group(function () {
     Route::get('/dashboard', [CivilianController::class, 'dashboard'])->name('dashboard');
-    Route::get('/report-incident', [CivilianController::class, 'reportIncident'])->name('report-incident');
-    Route::get('/send-sos', [CivilianController::class, 'sendSOS'])->name('send-sos');
     Route::get('/profile', [CivilianController::class, 'profile'])->name('profile');
+});
+
+// API Routes for Dashboard functionality
+Route::middleware('auth')->group(function () {
+    // SOS Routes
+    Route::post('/sos', [SOSController::class, 'store'])->name('sos.store');
+    
+    // Incident Routes
+    Route::resource('incidents', IncidentController::class);
+    
+    // Notification Routes
+    Route::get('/notifications/check', [NotificationController::class, 'check'])->name('notifications.check');
 });
 
 Route::middleware('auth')->group(function () {

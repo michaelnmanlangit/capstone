@@ -29,12 +29,7 @@
                     @endif
                     
                     @if(auth()->user()->isCivilian() || auth()->user()->isAdmin())
-                        <x-nav-link :href="route('civilian.report-incident')" :active="request()->routeIs('civilian.report-incident')">
-                            {{ __('Report') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('civilian.send-sos')" :active="request()->routeIs('civilian.send-sos')" class="text-red-600 hover:text-red-800">
-                            {{ __('🚨 SOS') }}
-                        </x-nav-link>
+                        <!-- Navigation items removed - now handled in dashboard cards -->
                     @endif
                 </div>
             </div>

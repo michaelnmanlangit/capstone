@@ -74,6 +74,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if user has one of the specified roles
+     */
+    public function hasRole($roles): bool
+    {
+        if (is_string($roles)) {
+            return $this->role === $roles;
+        }
+
+        if (is_array($roles)) {
+            return in_array($this->role, $roles);
+        }
+
+        return false;
+    }
+
+    /**
      * Get full name
      */
     public function getFullNameAttribute(): string
