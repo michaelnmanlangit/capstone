@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-12">
+<div class="py-4">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <!-- Welcome Section -->
         <div class="bg-white rounded-lg p-4 mb-8 shadow-sm">
@@ -17,7 +17,7 @@
         </div>
 
         <!-- Action Cards -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <!-- SOS Card -->
             <div class="bg-white rounded-xl shadow-sm p-6 h-44">
                 <div class="mb-6">
@@ -68,7 +68,7 @@
         </div>
 
         <!-- Recent Activity Section (Optional) -->
-        <div class="mt-12 max-w-6xl mx-auto">
+        <div class="mt-8 max-w-6xl mx-auto">
             <div class="bg-white rounded-xl shadow-sm p-6">
                 <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
                 <div class="text-sm text-gray-600">

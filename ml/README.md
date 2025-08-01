@@ -30,7 +30,7 @@
 
 ### 1. Install Dependencies
 ```bash
-cd c:\Users\manla\Desktop\capstone\ml
+
 py -m pip install -r requirements.txt
 ```
 
