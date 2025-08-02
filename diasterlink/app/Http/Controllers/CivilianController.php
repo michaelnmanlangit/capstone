@@ -15,4 +15,14 @@ class CivilianController extends Controller
     {
         return view('civilian.profile');
     }
+
+    public function sos()
+    {
+        return view('civilian.sos');
+    }
+
+    public function incident()
+    {
+        return view('civilian.incident');
+    }
 }

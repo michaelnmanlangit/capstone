@@ -29,7 +29,9 @@
                     @endif
                     
                     @if(auth()->user()->isCivilian() || auth()->user()->isAdmin())
-                        <!-- Navigation items removed - now handled in dashboard cards -->
+                        <x-nav-link :href="route('community.index')" :active="request()->routeIs('community.*')">
+                            {{ __('Community') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>

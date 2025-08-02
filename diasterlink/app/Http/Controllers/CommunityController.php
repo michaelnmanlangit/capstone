@@ -2,64 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Community;
+use App\Models\CommunityPost;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommunityController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the community feed
      */
     public function index()
     {
-        //
+        $posts = CommunityPost::with(['user', 'reactions.user', 'comments.user'])
+            ->where('status', 'published')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('community.index', compact('posts'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Search posts and users
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
-    }
+        $query = $request->get('q');
+        
+        if (empty($query)) {
+            return redirect()->route('community.index');
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $posts = CommunityPost::with(['user', 'reactions.user', 'comments.user'])
+            ->where('status', 'published')
+            ->where(function ($q) use ($query) {
+                $q->where('content', 'LIKE', "%{$query}%")
+                  ->orWhereHas('user', function($userQuery) use ($query) {
+                      $userQuery->where('name', 'LIKE', "%{$query}%");
+                  });
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Community $community)
-    {
-        //
-    }
+        $users = User::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('email', 'LIKE', "%{$query}%")
+            ->limit(5)
+            ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Community $community)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Community $community)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Community $community)
-    {
-        //
+        return view('community.search', compact('posts', 'users', 'query'));
     }
 }
